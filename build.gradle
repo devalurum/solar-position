@@ -1,0 +1,115 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'java-library'
+    id 'io.spring.dependency-management' version "1.0.12.RELEASE"
+    id 'org.springframework.boot' version '2.7.3'
+    id 'edu.sc.seis.launch4j' version '2.5.4'
+}
+
+group 'org.vniiftri'
+version '1.0'
+description = 'Solar Position Calculator'
+
+java.sourceCompatibility = JavaVersion.VERSION_11
+
+repositories {
+    mavenLocal()
+    maven {
+        url = uri('https://repo.maven.apache.org/maven2/')
+    }
+    maven {
+        url = uri('https://repo1.maven.org/maven2/')
+    }
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
+    mavenCentral()
+}
+
+ext {
+    solarpositioningVersion = "0.1.7"
+    fingBugsVersion = "3.0.2"
+    lombokVersion = "1.18.24"
+    apacheCommonsVersion = "3.0"
+}
+
+dependencies {
+    implementation('org.springframework.boot:spring-boot-starter-web') {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-json'
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-webmvc'
+        exclude group: 'org.apache.tomcat.embed', module: 'tomcat-embed-core:9.0.65'
+        exclude group: 'org.apache.tomcat.embed', module: 'tomcat-embed-el:9.0.65'
+        exclude group: 'org.apache.tomcat.embed', module: 'tomcat-embed-websocket:9.0.65'
+    }
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-configuration-processor'
+
+    implementation "net.e175.klaus:solarpositioning:$solarpositioningVersion"
+    implementation "com.google.code.findbugs:jsr305:$fingBugsVersion"
+
+    implementation "org.apache.commons:commons-lang3:$apacheCommonsVersion"
+
+    compileOnly "org.projectlombok:lombok:$lombokVersion"
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+}
+
+configurations {
+    compile.exclude module: 'spring-boot-starter-tomcat'
+    compile.exclude module: 'spring-boot-starter-json'
+    compile.exclude module: 'spring-boot-starter-logging'
+    compile.exclude module: 'spring-boot-starter-webmvc'
+    compile.exclude group: 'org.apache.tomcat'
+    compile.exclude group: 'org.apache.tomcat.embed'
+}
+
+bootRun {
+    standardInput = System.in
+}
+
+run {
+    standardInput = System.in
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+task managedVersions {
+    doLast {
+        dependencyManagement.managedVersions.each {
+            println it
+        }
+    }
+}
+
+springBoot {
+    buildInfo()
+}
+
+tasks.named("bootJar") {
+    archiveName = "$baseName.$extension"
+}
+
+launch4j {
+    headerType = "console"
+    outfile = "${project.description}.exe"
+    windowTitle = project.description
+    mainClassName = project.mainClassName
+    icon = "${projectDir}/src/main/resources/icons/logo-vniiftri.ico"
+    productName = project.description
+    internalName = project.description
+    fileDescription = project.description
+    language = "RUSSIAN"
+    version = project.version
+    textVersion = project.version
+    downloadUrl = "https://github.com/vniiftri-irk/solar-position"
+    supportUrl = "https://jitpack.io/p/KlausBrunner/solarpositioning"
+    companyName = "VNIIFTRI"
+    copyright = "© 2023 VNIIFTRI"
+    jreMinVersion = JavaVersion.VERSION_1_8
+    messagesStartupError = "Install Java 8+ version for start this program. Download: https://corretto.aws/downloads/latest/amazon-corretto-11-x64-windows-jdk.msi"
+    restartOnCrash = false
+    jarTask = project.tasks.bootJar
+}
