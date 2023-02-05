@@ -8,4 +8,5 @@ public interface SaveStrategy<T> {
     T save(SpaAnswer spaAnswer);
 
     Answer getAnswer();
+
 }
