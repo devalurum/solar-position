@@ -2,7 +2,7 @@ spring:
   profiles:
     active: default
   application:
-    name: vniiftri-solar-positioning
+    name: solar-positioning
   main:
     banner-mode: off
     web-application-type: none
@@ -10,7 +10,7 @@ spring:
     ansi:
       enabled: ALWAYS
 
-vniiftri:
+app:
   timezone: 8
   geolocation:
     latitude: 52.2191385

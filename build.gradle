@@ -7,7 +7,7 @@ plugins {
     id 'edu.sc.seis.launch4j' version '2.5.4'
 }
 
-group 'org.vniiftri'
+group 'org.devalurum'
 version '1.0'
 description = 'Solar Position Calculator'
 
@@ -97,17 +97,17 @@ launch4j {
     outfile = "${project.description}.exe"
     windowTitle = project.description
     mainClassName = project.mainClassName
-    icon = "${projectDir}/src/main/resources/icons/logo-vniiftri.ico"
+    icon = "${projectDir}/src/main/resources/icons/solar-system.ico"
     productName = project.description
     internalName = project.description
     fileDescription = project.description
     language = "RUSSIAN"
     version = project.version
     textVersion = project.version
-    downloadUrl = "https://github.com/vniiftri-irk/solar-position"
+    downloadUrl = "https://github.com/devalurum/solar-position"
     supportUrl = "https://jitpack.io/p/KlausBrunner/solarpositioning"
-    companyName = "VNIIFTRI"
-    copyright = "© 2023 VNIIFTRI"
+    companyName = "Devalurum"
+    copyright = "© 2023 Devalurum"
     jreMinVersion = JavaVersion.VERSION_1_8
     messagesStartupError = "Install Java 8+ version for start this program. Download: https://corretto.aws/downloads/latest/amazon-corretto-11-x64-windows-jdk.msi"
     restartOnCrash = false
