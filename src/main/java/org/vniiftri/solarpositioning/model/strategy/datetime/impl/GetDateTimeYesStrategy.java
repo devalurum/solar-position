@@ -5,8 +5,6 @@ import org.springframework.stereotype.Component;
 import org.vniiftri.solarpositioning.model.strategy.Answer;
 import org.vniiftri.solarpositioning.model.strategy.datetime.GetDateTimeStrategy;
 
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.Scanner;
@@ -19,7 +17,6 @@ public class GetDateTimeYesStrategy implements GetDateTimeStrategy<ZonedDateTime
 
     @Override
     public ZonedDateTime getDateTime(Scanner in) {
-        //return LocalDateTime.now(ZoneOffset.UTC).atZone(ZoneOffset.ofHours(timezone));
         return ZonedDateTime.now(ZoneOffset.ofHours(timezone));
     }
 
