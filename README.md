@@ -10,10 +10,11 @@
 - Spring Boot
 - Spring Events
 - Spring Web (без Tomcat и сервера)
-- Patterns Command and Strategy
+- Паттерны Command и Strategy
 - Lombok
 - [SPA library](https://github.com/KlausBrunner/solarpositioning)
 - Gradle
+- Launch4j (сборка исполняемого exe-файла)
 
 ## Сборка приложения
 **Необходимо:**
