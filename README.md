@@ -1,15 +1,14 @@
-# Vniiftri Solar Position Calculator
+# Spring Solar Position Calculator
 
 ## Описание
-Консольное приложение для определения положения солнца с помощью алгоритма SPA
-для Иркутского филиала ФГУП «ВНИИФТРИ».
+Консольное приложение для определения положения солнца с помощью алгоритма SPA.
 
 ### Стек технологий
 
 - Java 11
-- Spring Boot
+- Spring Boot 
 - Spring Events
-- Spring Web (без Tomcat и сервера)
+- Spring Web (Console mode)
 - Паттерны Command и Strategy
 - Lombok
 - [SPA library](https://github.com/KlausBrunner/solarpositioning)
@@ -24,8 +23,8 @@
 ```shell script
 mkdir "solar-position"
 cd solar-position
-git clone git clone https://github.com/vniiftri-irk/solar-position.git
-git remote add origin https://github.com/vniiftri-irk/solar-position.git
+git clone git clone https://github.com/devalurum/solar-position.git
+git remote add origin https://github.com/devalurum/solar-position.git
 
 ./gradlew wrapper
 # сборка проекта
@@ -58,5 +57,3 @@ vniiftri:
     side-of-the-world-azimuth: 90 # Север: 360, Восток: 90, Юг: 180, Запад: 270 (в градусах °).
   filename: solar_position.txt
 ```
-
-#### **© 2023 ФГУП «ВНИИФТРИ»**
