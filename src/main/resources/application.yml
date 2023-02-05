@@ -13,8 +13,8 @@ spring:
 vniiftri:
   timezone: 8
   geolocation:
-    latitude: 52.2191385
-    longitude: 104.3163901
+    latitude: 52
+    longitude: 104
     altitude: 544 # m
     side-of-the-world-azimuth: 90 # Север: 360, Восток: 90, Юг: 180, Запад: 270 (в градусах °).
   filename: solar_position.txt
